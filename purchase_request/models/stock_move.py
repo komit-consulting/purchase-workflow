@@ -108,21 +108,10 @@ class StockMove(models.Model):
         """
         if default is None:
             default = {}
-<<<<<<< Updated upstream
+        
         for rec in self:
             if not default.get("purchase_request_allocation_ids") and (
                 default.get("product_uom_qty") or rec.state in ("done", "cancel")
-=======
-        
-        if not default.get("purchase_request_allocation_ids") and (
-            default.get("product_uom_qty") or self.state in ("done", "cancel")
-        ):
-            default["purchase_request_allocation_ids"] = []
-            new_move_qty = default.get("product_uom_qty") or self.product_uom_qty
-            rounding = self.product_id.uom_id.rounding
-            for alloc in self.purchase_request_allocation_ids.filtered(
-                "open_product_qty"
->>>>>>> Stashed changes
             ):
                 default["purchase_request_allocation_ids"] = []
                 new_move_qty = default.get("product_uom_qty") or rec.product_uom_qty
