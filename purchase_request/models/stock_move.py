@@ -108,7 +108,6 @@ class StockMove(models.Model):
         """
         if default is None:
             default = {}
-        
         for rec in self:
             if not default.get("purchase_request_allocation_ids") and (
                 default.get("product_uom_qty") or rec.state in ("done", "cancel")
